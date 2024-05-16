@@ -15,18 +15,33 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _decrementCounter() {
+    setState(() {
+      if (_counter > 0) _counter--;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('my increment'),
-      ),
-      body: Center(child: Text("นับไปแล้ว $_counter")),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        appBar: AppBar(
+          title: const Text('my increment'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("นับไปแล้ว $_counter"),
+              ElevatedButton(
+                onPressed: () => _incrementCounter(),
+                child: const Text("+"),
+              ),
+              ElevatedButton(
+                onPressed: () => _decrementCounter(),
+                child: const Text("-"),
+              ),
+            ],
+          ),
+        ));
   }
 }
